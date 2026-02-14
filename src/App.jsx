@@ -65,24 +65,23 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative">
-      {/* FIXED BACKGROUND SLIDESHOW */}
+      {/* BACKGROUND SLIDESHOW - FIXED */}
       <div className="fixed inset-0 z-0">
         <FashionSlideshow />
       </div>
 
-      {/* ALL CONTENT ON TOP */}
+      {/* CONTENT LAYER */}
       <div className="relative z-10">
         <InfoButton onClick={handleInfoClick} />
         <ApplyButton />
 
-        {/* LOGO WITH WHITE SEMI-TRANSPARENT BOX */}
+        {/* LOGO WITH SEMI-TRANSPARENT WHITE BOX */}
         <header className="py-12 px-8 md:px-12">
-          <div className="max-w-[1200px] mx-auto inline-block">
-            <div className="bg-white/40 backdrop-blur-sm px-8 py-6 rounded-2xl">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="bg-white/40 backdrop-blur-md px-8 py-6 rounded-2xl inline-block">
               <h1 className="text-6xl md:text-7xl font-black text-almost-black tracking-tight mb-2"
                   style={{
                     fontFamily: "'Fredoka One', 'Righteous', 'Arial Black', sans-serif",
-                    textShadow: '2px 2px 0px rgba(255,255,255,0.5)',
                     letterSpacing: '0.05em'
                   }}>
                 RUNWAY
@@ -94,11 +93,11 @@ export default function App() {
           </div>
         </header>
 
-        {/* MAIN CONTENT WITH WARM WHITE BACKGROUND */}
-        <main className="px-8 md:px-12 pb-40 bg-warm-white/95">
+        {/* MAIN CONTENT - NO BACKGROUND SO SLIDESHOW SHOWS THROUGH */}
+        <main className="px-8 md:px-12 pb-40">
           {filteredCreators && (
-            <div className="max-w-[1200px] mx-auto mb-6 pt-8">
-              <p className="text-medium-gray text-sm">
+            <div className="max-w-[1200px] mx-auto mb-6">
+              <p className="text-medium-gray text-sm bg-white/60 backdrop-blur-sm inline-block px-3 py-1 rounded">
                 Showing {filteredCreators.length} {filteredCreators.length === 1 ? 'result' : 'results'}
               </p>
             </div>
@@ -108,7 +107,6 @@ export default function App() {
             max-w-[1200px] mx-auto
             grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
             gap-10 md:gap-12
-            pt-8
           ">
             {creatorsToDisplay.map((creator, index) => (
               <CreatorTile
@@ -122,7 +120,7 @@ export default function App() {
 
           {creatorsToDisplay.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-medium-gray font-light">
+              <p className="text-medium-gray font-light bg-white/60 backdrop-blur-sm inline-block px-4 py-2 rounded">
                 No creators found
               </p>
             </div>
