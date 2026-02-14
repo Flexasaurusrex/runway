@@ -125,3 +125,13 @@ export default function App() {
         isOpen={showWelcome}
         onClose={handleCloseWelcome}
       />
+
+      {selectedCreator && (
+        <FullScreenPlayer 
+          creator={selectedCreator} 
+          onClose={handleClosePlayer}
+        />
+      )}
+    </div>
+  );
+}
