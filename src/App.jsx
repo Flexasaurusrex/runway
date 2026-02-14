@@ -64,36 +64,40 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-warm-white relative">
-      {/* Full Page Background Slideshow - Fixed position */}
+    <div className="min-h-screen relative">
+      {/* FIXED BACKGROUND SLIDESHOW */}
       <div className="fixed inset-0 z-0">
         <FashionSlideshow />
       </div>
 
-      {/* Content overlay with background */}
+      {/* ALL CONTENT ON TOP */}
       <div className="relative z-10">
         <InfoButton onClick={handleInfoClick} />
         <ApplyButton />
 
+        {/* LOGO WITH WHITE SEMI-TRANSPARENT BOX */}
         <header className="py-12 px-8 md:px-12">
-          <div className="max-w-[1200px] mx-auto">
-            <h1 className="text-6xl md:text-7xl font-black text-almost-black tracking-tight mb-2"
-                style={{
-                  fontFamily: "'Fredoka One', 'Righteous', 'Arial Black', sans-serif",
-                  textShadow: '3px 3px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '0.05em'
-                }}>
-              RUNWAY
-            </h1>
-            <p className="text-almost-black font-medium text-sm md:text-base">
-              Live fashion. No Algorithm.
-            </p>
+          <div className="max-w-[1200px] mx-auto inline-block">
+            <div className="bg-white/40 backdrop-blur-sm px-8 py-6 rounded-2xl">
+              <h1 className="text-6xl md:text-7xl font-black text-almost-black tracking-tight mb-2"
+                  style={{
+                    fontFamily: "'Fredoka One', 'Righteous', 'Arial Black', sans-serif",
+                    textShadow: '2px 2px 0px rgba(255,255,255,0.5)',
+                    letterSpacing: '0.05em'
+                  }}>
+                RUNWAY
+              </h1>
+              <p className="text-almost-black font-medium text-sm md:text-base">
+                Live fashion. No Algorithm.
+              </p>
+            </div>
           </div>
         </header>
 
-        <main className="px-8 md:px-12 pb-40">
+        {/* MAIN CONTENT WITH WARM WHITE BACKGROUND */}
+        <main className="px-8 md:px-12 pb-40 bg-warm-white/95">
           {filteredCreators && (
-            <div className="max-w-[1200px] mx-auto mb-6">
+            <div className="max-w-[1200px] mx-auto mb-6 pt-8">
               <p className="text-medium-gray text-sm">
                 Showing {filteredCreators.length} {filteredCreators.length === 1 ? 'result' : 'results'}
               </p>
@@ -104,6 +108,7 @@ export default function App() {
             max-w-[1200px] mx-auto
             grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
             gap-10 md:gap-12
+            pt-8
           ">
             {creatorsToDisplay.map((creator, index) => (
               <CreatorTile
