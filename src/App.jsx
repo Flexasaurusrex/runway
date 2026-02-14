@@ -64,14 +64,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* BACKGROUND SLIDESHOW - FIXED */}
-      <div className="fixed inset-0 z-0">
-        <FashionSlideshow />
-      </div>
+    <>
+      {/* BACKGROUND SLIDESHOW - LOWEST LAYER */}
+      <FashionSlideshow />
 
-      {/* CONTENT LAYER */}
-      <div className="relative z-10">
+      {/* ALL CONTENT */}
+      <div className="min-h-screen relative z-10">
         <InfoButton onClick={handleInfoClick} />
         <ApplyButton />
 
@@ -93,11 +91,11 @@ export default function App() {
           </div>
         </header>
 
-        {/* MAIN CONTENT - NO BACKGROUND SO SLIDESHOW SHOWS THROUGH */}
+        {/* MAIN CONTENT */}
         <main className="px-8 md:px-12 pb-40">
           {filteredCreators && (
             <div className="max-w-[1200px] mx-auto mb-6">
-              <p className="text-medium-gray text-sm bg-white/60 backdrop-blur-sm inline-block px-3 py-1 rounded">
+              <p className="text-medium-gray text-sm">
                 Showing {filteredCreators.length} {filteredCreators.length === 1 ? 'result' : 'results'}
               </p>
             </div>
@@ -120,7 +118,7 @@ export default function App() {
 
           {creatorsToDisplay.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-medium-gray font-light bg-white/60 backdrop-blur-sm inline-block px-4 py-2 rounded">
+              <p className="text-medium-gray font-light">
                 No creators found
               </p>
             </div>
@@ -144,6 +142,6 @@ export default function App() {
           />
         )}
       </div>
-    </div>
+    </>
   );
 }
