@@ -1,54 +1,146 @@
 import React, { useState, useEffect } from 'react';
+import CreatorTile from './components/CreatorTile.jsx';
+import AISearchBar from './components/AISearchBar.jsx';
+import FullScreenPlayer from './components/FullScreenPlayer.jsx';
+import WelcomeModal from './components/WelcomeModal.jsx';
+import InfoButton from './components/InfoButton.jsx';
+import ApplyButton from './components/ApplyButton.jsx';
+import FashionSlideshow from './components/FashionSlideshow.jsx';
+import { LIVE_CREATORS } from './data/creators.js';
 
-export default function FashionSlideshow() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Curated Unsplash collection IDs for fashion
-  const collectionIds = [
-    '3330445', // Fashion
-    '1154337', // Street Style
-    '1613835', // Runway
-    '139386',  // Sneakers
-    '1154448'  // Designer Fashion
-  ];
-
-  const images = [
-    'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80', // Fashion
-    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80', // Shoe
-    'https://images.unsplash.com/photo-1558769132-cb1aea3c878d?w=1600&q=80', // Runway
-    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1600&q=80', // Fashion model
-    'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80', // Street style
-    'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&q=80', // Runway show
-    'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=1600&q=80', // Sneakers
-    'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=1600&q=80', // Designer
-    'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=1600&q=80', // Clothing rack
-    'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1600&q=80'  // Fashion store
-  ];
+export default function App() {
+  const [selectedCreator, setSelectedCreator] = useState(null);
+  const [filteredCreators, setFilteredCreators] = useState(null);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [creators, setCreators] = useState(LIVE_CREATORS);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % images.length);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
+    const hasVisited = localStorage.getItem('runway_has_visited');
+    if (!hasVisited) {
+      setShowWelcome(true);
+      localStorage.setItem('runway_has_visited', 'true');
+    }
   }, []);
 
+  const handleSearchResults = (results) => {
+    setFilteredCreators(results);
+  };
+
+  const handleTileClick = (creator) => {
+    setSelectedCreator(creator);
+  };
+
+  const handleClosePlayer = () => {
+    setSelectedCreator(null);
+  };
+
+  const handleCloseWelcome = () => {
+    setShowWelcome(false);
+  };
+
+  const handleInfoClick = () => {
+    setShowWelcome(true);
+  };
+
+  const creatorsToDisplay = filteredCreators || creators;
+
+  const getAdjacentVideos = (index) => {
+    const adjacentIndices = [
+      index - 1,
+      index + 1,
+      index - 3,
+      index + 3
+    ].filter(i => i >= 0 && i < creatorsToDisplay.length);
+
+    return adjacentIndices
+      .map(i => {
+        const creator = creatorsToDisplay[i];
+        if (creator?.status === 'offline' && creator?.offlineVideo) {
+          return creator.offlineVideo;
+        }
+        return null;
+      })
+      .filter(Boolean);
+  };
+
   return (
-    <div className="absolute inset-0">
-      {images.map((url, index) => (
-        <div
-          key={url}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentIndex ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={url}
-            alt="Fashion background"
-            className="w-full h-full object-cover"
+    <div className="min-h-screen bg-warm-white relative">
+      {/* Full Page Background Slideshow - Fixed position */}
+      <div className="fixed inset-0 z-0">
+        <FashionSlideshow />
+      </div>
+
+      {/* Content overlay with background */}
+      <div className="relative z-10">
+        <InfoButton onClick={handleInfoClick} />
+        <ApplyButton />
+
+        <header className="py-12 px-8 md:px-12">
+          <div className="max-w-[1200px] mx-auto">
+            <h1 className="text-6xl md:text-7xl font-black text-almost-black tracking-tight mb-2"
+                style={{
+                  fontFamily: "'Fredoka One', 'Righteous', 'Arial Black', sans-serif",
+                  textShadow: '3px 3px 0px rgba(0,0,0,0.2)',
+                  letterSpacing: '0.05em'
+                }}>
+              RUNWAY
+            </h1>
+            <p className="text-almost-black font-medium text-sm md:text-base">
+              Live fashion. No Algorithm.
+            </p>
+          </div>
+        </header>
+
+        <main className="px-8 md:px-12 pb-40">
+          {filteredCreators && (
+            <div className="max-w-[1200px] mx-auto mb-6">
+              <p className="text-medium-gray text-sm">
+                Showing {filteredCreators.length} {filteredCreators.length === 1 ? 'result' : 'results'}
+              </p>
+            </div>
+          )}
+
+          <div className="
+            max-w-[1200px] mx-auto
+            grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+            gap-10 md:gap-12
+          ">
+            {creatorsToDisplay.map((creator, index) => (
+              <CreatorTile
+                key={creator.id}
+                creator={creator}
+                onClick={handleTileClick}
+                adjacentVideos={getAdjacentVideos(index)}
+              />
+            ))}
+          </div>
+
+          {creatorsToDisplay.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-medium-gray font-light">
+                No creators found
+              </p>
+            </div>
+          )}
+        </main>
+
+        <AISearchBar 
+          creators={creators}
+          onResultsFound={handleSearchResults}
+        />
+
+        <WelcomeModal 
+          isOpen={showWelcome}
+          onClose={handleCloseWelcome}
+        />
+
+        {selectedCreator && (
+          <FullScreenPlayer 
+            creator={selectedCreator} 
+            onClose={handleClosePlayer}
           />
-        </div>
-      ))}
+        )}
+      </div>
     </div>
   );
 }
