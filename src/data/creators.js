@@ -4,10 +4,10 @@ export const LIVE_CREATORS = [
     name: 'bestdressed',
     tags: ['thrift', 'styling', 'sustainable'],
     bio: 'Thrift hauls and creative styling with vintage finds',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'bUHAb95nmTk', // Popular styling video
-    status: 'offline',
+    viewers: 342,
+    timeLength: '2h 15m',
+    videoId: 'bUHAb95nmTk',
+    status: 'live',
     category: 'styling'
   },
   {
@@ -15,10 +15,10 @@ export const LIVE_CREATORS = [
     name: 'Richie Le',
     tags: ['sneakers', 'streetwear', 'hype'],
     bio: 'Sneaker reviews, pickups, and streetwear fits',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'nZXCIedzTlQ', // Sneaker content
-    status: 'offline',
+    viewers: 567,
+    timeLength: '1h 42m',
+    videoId: 'nZXCIedzTlQ',
+    status: 'live',
     category: 'sneakers'
   },
   {
@@ -26,10 +26,10 @@ export const LIVE_CREATORS = [
     name: 'Alexandra Girly Talk',
     tags: ['designer', 'luxury', 'styling'],
     bio: 'Luxury fashion hauls and designer styling tips',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'k9KFGw0eWBk', // Designer content
-    status: 'offline',
+    viewers: 891,
+    timeLength: '3h 8m',
+    videoId: 'k9KFGw0eWBk',
+    status: 'live',
     category: 'styling'
   },
   {
@@ -37,10 +37,10 @@ export const LIVE_CREATORS = [
     name: 'Mia Maples',
     tags: ['thrift', 'transformation', 'DIY'],
     bio: 'Thrift flips and fashion transformations',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'PAYp_fv_nik', // Thrift content
-    status: 'offline',
+    viewers: 423,
+    timeLength: '55m',
+    videoId: 'PAYp_fv_nik',
+    status: 'live',
     category: 'styling'
   },
   {
@@ -48,10 +48,10 @@ export const LIVE_CREATORS = [
     name: 'Brad Hall',
     tags: ['sneakers', 'comedy', 'reviews'],
     bio: 'Deadpan sneaker reviews with comedic styling',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'rMHcs0FXmCM', // Sneaker review
-    status: 'offline',
+    viewers: 734,
+    timeLength: '1h 23m',
+    videoId: 'rMHcs0FXmCM',
+    status: 'live',
     category: 'sneakers'
   },
   {
@@ -59,10 +59,10 @@ export const LIVE_CREATORS = [
     name: 'WithWendy',
     tags: ['sewing', 'design', 'handmade'],
     bio: 'Garment construction and pattern making tutorials',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'SXGE8JMz2dE', // Sewing tutorial
-    status: 'offline',
+    viewers: 289,
+    timeLength: '4h 12m',
+    videoId: 'SXGE8JMz2dE',
+    status: 'live',
     category: 'design'
   },
   {
@@ -70,10 +70,10 @@ export const LIVE_CREATORS = [
     name: 'Frugal Aesthetic',
     tags: ['vintage', 'thrift', 'menswear'],
     bio: 'Vintage menswear and thrifting deep dives',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'OjPMXi2uSGM', // Vintage content
-    status: 'offline',
+    viewers: 612,
+    timeLength: '2h 31m',
+    videoId: 'OjPMXi2uSGM',
+    status: 'live',
     category: 'styling'
   },
   {
@@ -81,10 +81,10 @@ export const LIVE_CREATORS = [
     name: 'Sangiev',
     tags: ['streetwear', 'designer', 'luxury'],
     bio: 'High-end streetwear and designer fashion reviews',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: '_JFkFcGjPSo', // Designer streetwear
-    status: 'offline',
+    viewers: 1024,
+    timeLength: '1h 47m',
+    videoId: '_JFkFcGjPSo',
+    status: 'live',
     category: 'styling'
   },
   {
@@ -92,10 +92,10 @@ export const LIVE_CREATORS = [
     name: 'Cool Shirtz',
     tags: ['vintage', 'tees', 'graphics'],
     bio: 'Vintage tee collecting and graphic fashion history',
-    viewers: 0,
-    timeLength: '0m',
-    videoId: 'Vc_Di3OFDJk', // Vintage tees
-    status: 'offline',
+    viewers: 445,
+    timeLength: '3h 5m',
+    videoId: 'Vc_Di3OFDJk',
+    status: 'live',
     category: 'styling'
   }
 ];
