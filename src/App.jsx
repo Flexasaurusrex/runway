@@ -5,6 +5,7 @@ import FullScreenPlayer from './components/FullScreenPlayer.jsx';
 import WelcomeModal from './components/WelcomeModal.jsx';
 import InfoButton from './components/InfoButton.jsx';
 import ApplyButton from './components/ApplyButton.jsx';
+import FashionSlideshow from './components/FashionSlideshow.jsx';
 import { LIVE_CREATORS } from './data/creators.js';
 
 export default function App() {
@@ -67,17 +68,26 @@ export default function App() {
       <InfoButton onClick={handleInfoClick} />
       <ApplyButton />
 
-      <header className="py-12 px-8 md:px-12">
-        <div className="max-w-[1200px] mx-auto">
+      <header className="relative py-24 px-8 md:px-12 overflow-hidden">
+        {/* Background Slideshow */}
+        <div className="absolute inset-0 z-0">
+          <FashionSlideshow />
+        </div>
+        
+        {/* Overlay gradient for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-warm-white/80 via-warm-white/60 to-warm-white z-10" />
+        
+        {/* Content */}
+        <div className="max-w-[1200px] mx-auto relative z-20">
           <h1 className="text-6xl md:text-7xl font-black text-almost-black tracking-tight mb-2"
               style={{
                 fontFamily: "'Fredoka One', 'Righteous', 'Arial Black', sans-serif",
-                textShadow: '3px 3px 0px rgba(0,0,0,0.1)',
+                textShadow: '3px 3px 0px rgba(0,0,0,0.2)',
                 letterSpacing: '0.05em'
               }}>
             RUNWAY
           </h1>
-          <p className="text-light-gray font-light text-sm md:text-base">
+          <p className="text-almost-black font-medium text-sm md:text-base">
             Live fashion. No Algorithm.
           </p>
         </div>
