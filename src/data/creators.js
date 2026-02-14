@@ -14,7 +14,7 @@ export const LIVE_CREATORS = [
     id: 'hautelemode',
     name: 'HauteLeMode',
     tags: ['commentary', 'reviews', 'red carpet'],
-    bio: 'Fun, sassy, bitchy, analytical — Luke Meagher\'s fashion criticism with real FIT education behind it',
+    bio: 'Fun, sassy, bitchy, analytical',
     viewers: 4521,
     timeLength: '38m',
     videoId: 'hLwIdmFQG_Y',
